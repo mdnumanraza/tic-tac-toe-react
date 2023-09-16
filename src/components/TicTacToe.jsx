@@ -80,10 +80,12 @@ function checkWinner(tiles, setStrikeClass, setGameState, setWin, datafetch) {
       return;
     }
   }
-
+  
   const areAllTilesFilledIn = tiles.every((tile) => tile !== null);
   if (areAllTilesFilledIn) {
     setGameState(GameState.draw);
+    datafetch();
+    
   }
 }
 

@@ -12,7 +12,7 @@ This is no simple Tic-Tac-Toe game, it has many special features
 
 - 🌞🌘 Dark and Light mode
 - 🎵 Background music and sound effects while playing
-- 🔊🔇Play/pause button to turn off Background music
+- 🔊🔇Play/pause button to turn off/on Background music
 - 🎉Confetti show when play wins
 - 🗨 Displays success quotes when game ends
 - ❌⭕ On hovering the board shows player's turn either X or O

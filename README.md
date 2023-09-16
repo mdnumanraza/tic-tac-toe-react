@@ -17,8 +17,8 @@ This is no simple Tic-Tac-Toe game, it has many special features
 - 🎉Confetti show when player wins
 - 🗨 Displays success quotes when game ends by fetching an API that shows random quotes
 - ❌⭕ On hovering the board shows player's turn either X or O
-- ✏If any row , column or diagonal matches stirkes the combination
-
+- ✏If any row , column or diagonal matches get striked
+  
 ## Screenshot
 
 [![App Screenshot](https://i.pinimg.com/originals/27/8b/ac/278bac0254b1d5b886336d3882397e66.jpg)](https://tic-tac-toe-react-gamma.vercel.app/

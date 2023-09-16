@@ -11,12 +11,29 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 import axios from'axios';
 import play from '../play.png'
 import pause from '../pause.png'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  color:'black',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 
 const gameOverSound = new Audio(gameOverSoundAsset);
 gameOverSound.volume = 0.5;
 const clickSound = new Audio(clickSoundAsset);
-clickSound.volume = 0.5;
+clickSound.volume = 0.8;
 const bgSound = new Audio(bgSoundAsset);
 bgSound.volume = 0.2;
 
@@ -80,7 +97,11 @@ function TicTacToe( {handleMode, mode, apikey}) {
   const [strikeClass, setStrikeClass] = useState();
   const [gameState, setGameState] = useState(GameState.inProgress);
   const [quote , setQuote] = useState({});
-  const [soundIcon, setSoundIcon] = useState(play)
+  const [soundIcon, setSoundIcon] = useState(play);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   
 // fetch quote
   const datafetch = async()=>{
@@ -94,6 +115,14 @@ function TicTacToe( {handleMode, mode, apikey}) {
     });
   }
  
+  const Playit = () => {
+    if(soundIcon===play){
+      bgSound.play();
+    }else{
+      bgSound.pause();
+    }
+      }
+      useEffect(() => Playit(), [Playit]);
 
   const soundHandle = ()=>{
     if(soundIcon === pause){
@@ -150,9 +179,7 @@ function TicTacToe( {handleMode, mode, apikey}) {
     if (gameState !== GameState.inProgress) {
       gameOverSound.play();
       bgSound.pause();
-    }else{
-      bgSound.play();
-      
+      handleOpen();
     }
   }, [gameState]);
 
@@ -163,16 +190,21 @@ function TicTacToe( {handleMode, mode, apikey}) {
     <div className="container">
       <div className="head">
       <h1>Tic Tac Toe</h1>
-      <div>
-        <input type="checkbox" class="checkbox" id="checkbox" onChange={handleMode}/>
-          <label htmlFor="checkbox" class="checkbox-label">
+      
+      <div className="left-head">
+        <div className="mode-toggle">
+         <input type="checkbox" className="checkbox" id="checkbox" onChange={handleMode}/>
+          <label htmlFor="checkbox" className="checkbox-label">
             <p >🌘</p>
             <p>🌞</p>
-            <span class="ball"></span>
+            <span className="ball"></span>
           </label>
+          </div>
+
           <button style={{background:'none',border:'none',cursor:'pointer'}} onClick={soundHandle}><img src={soundIcon} width={'20px'} alt=""  className={mode} style={{background:'none',  filter:'brightness(2)}'}}
     /></button>
       </div>
+
       </div>
       <Board
         playerTurn={playerTurn}
@@ -181,13 +213,36 @@ function TicTacToe( {handleMode, mode, apikey}) {
         strikeClass={strikeClass}
       />
       <div className="win" >
-      <GameOver gameState={gameState} quote={quote}  />
-      <Reset gameState={gameState} onReset={handleReset} />
       </div>
 
     </div>
 
+
+      <div>
+      
+        {
+          open && <Button onClick={handleOpen}>^</Button>
+        }
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className="modal">
+        <div  className="modal-container" >
+        <GameOver gameState={gameState}  />
+      <Reset gameState={gameState} onReset={handleReset} quote={quote} handleClose={handleClose} />
+        </div>
+          
+        </div>
+      </Modal>
     </div>
+
+
+
+    </div>
+    
   );
 }
 

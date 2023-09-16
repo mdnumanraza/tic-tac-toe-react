@@ -11,6 +11,7 @@ This is no simple Tic-Tac-Toe game, it has many special features
 ## Features
 
 - 🌞🌘 Dark and Light mode
+- 📱 💻 100% responsive
 - 🎵 Background music and sound effects while playing
 - 🔊🔇Play/pause button to turn off/on Background music
 - 🎉Confetti show when play wins

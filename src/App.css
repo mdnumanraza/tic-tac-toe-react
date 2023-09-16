@@ -120,11 +120,13 @@ h1 {
 }
 
 .x-hover:hover::after {
+ 
   content: "X";
   opacity: 0.4;
 }
 
 .o-hover:hover::after {
+  
   content: "O";
   opacity: 0.4;
 }
@@ -214,8 +216,6 @@ h1 {
   padding: 10px;
   border-radius: 1.2rem;
   font-weight: 500;
-
-  /* background: rgb(53, 0, 102); */
 }
 
 

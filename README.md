@@ -52,7 +52,7 @@ This is no simple Tic-Tac-Toe game, it has many special features
 
 To get quotes you need to add the  environment variables to your .env file
 
-`VITE_API` = <your api key for quotes>
+`VITE_API` = (your api key for quotes)
 
 
 

@@ -38,7 +38,7 @@ This is no simple Tic-Tac-Toe game, it has many special features
 
 
 ```
-  git clone
+  git clone https://github.com/Numan71417/tic-tac-toe-react.git
 ```
 ```
   npm install

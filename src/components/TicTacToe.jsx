@@ -36,7 +36,7 @@ gameOverSound.volume = 0.5;
 const clickSound = new Audio(clickSoundAsset);
 clickSound.volume = 0.8;
 const bgSound = new Audio(bgSoundAsset);
-bgSound.volume = 0.2;
+bgSound.volume = 0.1;
 
 const PLAYER_X = "X";
 const PLAYER_O = "O";

@@ -109,13 +109,13 @@ h1 {
 
 .right-border {
  
-  border-right: 0.3em solid  #7e07b6;
+  border-right: 0.2em solid  #5307aa;
 
 }
 
 .bottom-border {
 
-  border-bottom: 0.3em solid #b65ce0;
+  border-bottom: 0.2em solid #5307aa;
  
 }
 
@@ -239,17 +239,18 @@ h1 {
   padding: 15px;
   border: none;
   border-radius: 1.2rem;
-  background-color: #360055;
+  background-color: #260046;
   color: white;
   width: 12rem;
   font-size: 1.1em;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .reset-button:hover{
-  background-color: #8702d4;
+  background-color: #45037a;
   
 }
 
@@ -270,9 +271,14 @@ h1 {
 }
 
 
-@media only screen and (min-width : 320px) {
-   /* Styles here */
-   .ball{
-    background-color: red;
-   }
+.gitlink{
+  position: absolute;
+ cursor: pointer;
+ bottom: 0;
+}
+
+.gitlink a{
+  text-decoration: none;
+  color: currentColor;
+  font-weight: 500;
 }

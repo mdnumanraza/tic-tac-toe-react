@@ -15,7 +15,7 @@ This is no simple Tic-Tac-Toe game, it has many special features
 - 🎵 Background music and sound effects while playing
 - 🔊🔇Play/pause button to turn off/on Background music
 - 🎉Confetti show when play wins
-- 🗨 Displays success quotes when game ends
+- 🗨 Displays success quotes when game ends by fetching an API that shows random quotes
 - ❌⭕ On hovering the board shows player's turn either X or O
 - ✏If any row , column or diagonal matches stirkes the combination
 

@@ -5,15 +5,20 @@ import GameState from "./GameState";
 import Reset from "./Reset";
 import gameOverSoundAsset from "../sounds/game_over.wav";
 import clickSoundAsset from "../sounds/click.wav";
+import bgSoundAsset from '../sounds/bg.wav'
 import Confetti from "react-confetti";
 import useWindowSize from 'react-use/lib/useWindowSize'
 import axios from'axios';
+import play from '../play.png'
+import pause from '../pause.png'
 
 
 const gameOverSound = new Audio(gameOverSoundAsset);
-gameOverSound.volume = 0.2;
+gameOverSound.volume = 0.5;
 const clickSound = new Audio(clickSoundAsset);
 clickSound.volume = 0.5;
+const bgSound = new Audio(bgSoundAsset);
+bgSound.volume = 0.2;
 
 const PLAYER_X = "X";
 const PLAYER_O = "O";
@@ -75,6 +80,7 @@ function TicTacToe( {handleMode, mode, apikey}) {
   const [strikeClass, setStrikeClass] = useState();
   const [gameState, setGameState] = useState(GameState.inProgress);
   const [quote , setQuote] = useState({});
+  const [soundIcon, setSoundIcon] = useState(play)
   
 // fetch quote
   const datafetch = async()=>{
@@ -87,7 +93,17 @@ function TicTacToe( {handleMode, mode, apikey}) {
       setQuote(response.data[0]);
     });
   }
+ 
 
+  const soundHandle = ()=>{
+    if(soundIcon === pause){
+      setSoundIcon(play);
+      bgSound.play();
+    }else{
+      setSoundIcon(pause);
+      bgSound.pause();
+    }
+  }
 
   const handleTileClick = (index) => {
     if (gameState !== GameState.inProgress) {
@@ -126,12 +142,17 @@ function TicTacToe( {handleMode, mode, apikey}) {
   useEffect(() => {
     if (tiles.some((tile) => tile !== null)) {
       clickSound.play();
+      
     }
   }, [tiles]);
 
   useEffect(() => {
     if (gameState !== GameState.inProgress) {
       gameOverSound.play();
+      bgSound.pause();
+    }else{
+      bgSound.play();
+      
     }
   }, [gameState]);
 
@@ -149,6 +170,8 @@ function TicTacToe( {handleMode, mode, apikey}) {
             <p>🌞</p>
             <span class="ball"></span>
           </label>
+          <button style={{background:'none',border:'none',cursor:'pointer'}} onClick={soundHandle}><img src={soundIcon} width={'20px'} alt=""  className={mode} style={{background:'none',  filter:'brightness(2)}'}}
+    /></button>
       </div>
       </div>
       <Board

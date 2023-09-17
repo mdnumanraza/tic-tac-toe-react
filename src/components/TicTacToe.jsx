@@ -207,12 +207,12 @@ function TicTacToe( {handleMode, mode, apikey}) {
           <button style={{background:'none',border:'none',cursor:'pointer'}} onClick={soundHandle}><img src={soundIcon} width={'20px'} alt=""  className={mode} style={{background:'none',  filter:'brightness(2)}'}}
     /></button>
       </div>
-        
+      </div>
+
         <div className="turn">
           {playerTurn}'s Turn 
       </div>
-        
-      </div>
+      
       <Board
         playerTurn={playerTurn}
         tiles={tiles}

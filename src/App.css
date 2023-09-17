@@ -90,6 +90,15 @@ h1 {
 
 }
 
+.turn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: large;
+  font-weight: 600;
+}
 
 .board {
   display: grid;
